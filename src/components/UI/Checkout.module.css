@@ -1,0 +1,92 @@
+.cart-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 20rem;
+  overflow: auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 0;
+}
+h3 {
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: larger;
+}
+.container {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #bb6855;
+  align-items: center;
+}
+input {
+  border-radius: 10px;
+  height: 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding-left: 5px;
+  background-color: #fcf8e8;
+}
+.container button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #bb6855;
+  border: 1px solid #bb6855;
+  color: #fcf8e8;
+  padding: 0.25rem 2rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.mail {
+  margin-left: 42px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  padding: 10px;
+  color: #bb6855;
+  border: 2px solid #bb6855;
+  border-radius: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.error {
+  background-color: rgb(219, 179, 179);
+}
+.errorMessage {
+  color: red;
+  text-align: center;
+}
+
+button:disabled {
+  background-color: rgb(219, 209, 209);
+  color: white;
+  cursor: not-allowed;
+  border-color: rgb(219, 209, 209);
+}
+
+p {
+  margin-left: 10px;
+}
+.EmailError {
+  margin-left: 37px;
+  display: inline;
+}
+
+.inputLine {
+  display: flex;
+  align-items: center;
+}
