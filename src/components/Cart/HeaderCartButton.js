@@ -24,8 +24,8 @@ const HeaderCartButton = (props) => {
     };
   }, [items]);
 
-  const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
-    return curNumber + item.amount;
+  const numberOfCartItems = cartCtx.items.reduce((accumulator, item) => {
+    return accumulator + item.amount;
   }, 0);
 
   const btnClasses = `${classes.button} ${

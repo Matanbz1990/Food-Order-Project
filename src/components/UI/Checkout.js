@@ -1,16 +1,16 @@
 import classes from "./Checkout.module.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import CartContext from "../store/CartContext";
 import Modal from "./Modal";
 import useInput from "../../hooks/use-input";
 import CheckoutCartItem from "./CheckoutCartItem";
-// import CheckoutInput from "./CheckoutInput";
 const Checkout = (props) => {
-  const [isSubmiting, setIsSubmiting] = useState(false);
+  // const [isSubmiting, setIsSubmiting] = useState(false);
   const [isOrdered, setIsOrdered] = useState(false);
-  // const [httpError, setHttpError] = useState();
+  const [httpError, setHttpError] = useState();
 
   const CartCtx = useContext(CartContext);
+
   const {
     value: fName,
     isValid: fnameIsValid,
@@ -62,41 +62,25 @@ const Checkout = (props) => {
     resetFName();
     resetLName();
     console.log("order pressed");
-    // setTimeout(props.onHideCheckout, 2000);
   };
 
-  const fetchData = async (person) => {
-    setIsSubmiting(true);
-
-    const response = await fetch(
+  const fetchData = (person) => {
+    fetch(
       "https://food-order2-ed52b-default-rtdb.firebaseio.com/persons.json",
       {
         method: "POST",
         body: JSON.stringify({ user: person, orderedItems: CartCtx.items }),
         headers: { "Content-Type": "application/json" },
       }
-    );
-    // if (!response.ok) {
-    //   throw new Error("Something went wrong!");
-    // }
-
-    const data = await response.json();
-
-    // fetchData(person).catch((error) => {
-    //   console.log(error.message);
-    //   setHttpError(error.message);
-    // return;
-    // });
-
-    setIsSubmiting(false);
-    setIsOrdered(true);
-
-    console.log(data);
-
-    // return (data) => {
-    //   if (data) return;
-    // };
-    CartCtx.clearCart();
+    )
+      .then(() => {
+        setIsOrdered(true);
+        CartCtx.clearCart();
+      })
+      .catch(() => {
+        setHttpError("Something went wrong! the order didn't succsses");
+        setIsOrdered(false);
+      });
   };
 
   const totalAmount = CartCtx.totalAmount.toFixed(2);
@@ -109,8 +93,6 @@ const Checkout = (props) => {
   return (
     <Modal onClose={props.onHideCheckout}>
       <form className={classes.container} onSubmit={orderFood}>
-        {/* <h1>Checkout!</h1> */}
-
         {cartItems}
 
         <div className={classes.total}>
@@ -120,31 +102,6 @@ const Checkout = (props) => {
 
         <p>Please fill your details, the recipt will be send to your E-mail.</p>
         <div className={classes.container}>
-          {/* <CheckoutInput
-            LabelInput="First Name"
-            inputError={fNameError}
-            inputValue={fName}
-            onChangeInputValue={changeFName}
-            onBlurInputValue={fnameIsTouched}
-            inputHasError={fnameHasError}
-          />
-          <CheckoutInput
-            LabelInput="Last Name"
-            inputError={lNameError}
-            inputValue={lName}
-            onChangeInputValue={changeLName}
-            onBlurInputValue={lnameIsTouched}
-            inputHasError={lnameHasError}
-          />
-          <CheckoutInput
-            LabelInput="Email"
-            inputError={emailError}
-            inputValue={Email}
-            onChangeInputValue={changeEmail}
-            onBlurInputValue={emailIsTouched}
-            inputHasError={emailHasError}
-          /> */}
-
           <div className={classes.inputLine}>
             <label>First Name:</label>
             <input
@@ -187,7 +144,7 @@ const Checkout = (props) => {
             </div>
             {emailHasError && (
               <p className={classes.errorMessage}>
-                please fill your Email(it must have "@").
+                please fill your Email (it must have "@").
               </p>
             )}
           </div>
@@ -200,9 +157,8 @@ const Checkout = (props) => {
             Order
           </button>
         </div>
+        {httpError && <h3>{httpError}</h3>}
         {isOrdered && <h3>Food ordered successfully!</h3>}
-        {!isOrdered && <h3></h3>}
-        {/* {httpError} */}
       </form>
     </Modal>
   );

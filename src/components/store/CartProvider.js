@@ -13,6 +13,7 @@ const cartReducer = (state, action) => {
     );
 
     const existingCartitem = state.items[existingCartItemIndex];
+
     let updatedItem;
     let updatedItems;
 
@@ -26,8 +27,6 @@ const cartReducer = (state, action) => {
     } else {
       updatedItems = state.items.concat(action.item);
     }
-
-    //post request
 
     return {
       items: updatedItems,
@@ -56,7 +55,6 @@ const cartReducer = (state, action) => {
 
     const updatedTotalAmount = state.totalAmount - existingCartitem.price;
 
-    //delete request
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,

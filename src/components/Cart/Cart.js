@@ -29,7 +29,7 @@ const Cart = (props) => {
     </ul>
   );
 
-  const AmountOfMoney = +CartCtx.totalAmount.toFixed(2);
+  const totalAmountOfMoney = +CartCtx.totalAmount.toFixed(2);
   const hasItems = CartCtx.items.length > 0;
 
   const orderClicked = () => {
@@ -42,7 +42,7 @@ const Cart = (props) => {
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount:</span>
-        <span>${AmountOfMoney}</span>
+        <span>${totalAmountOfMoney}</span>
       </div>
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={props.onHideCart}>

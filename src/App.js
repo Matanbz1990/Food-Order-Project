@@ -6,14 +6,14 @@ import Cart from "./components/Cart/Cart";
 import CartProvider from "./components/store/CartProvider";
 import Checkout from "./components/UI/Checkout";
 function App() {
-  const [isShowen, setIsShowen] = useState(false);
+  const [isCartShowen, setIsCartShowen] = useState(false);
   const [CheckoutIsShowen, setCheckoutIsShowen] = useState(false);
 
   const ShowCart = () => {
-    setIsShowen(true);
+    setIsCartShowen(true);
   };
   const HideCart = () => {
-    setIsShowen(false);
+    setIsCartShowen(false);
   };
   const onShowCheckout = () => {
     setCheckoutIsShowen(true);
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <CartProvider>
-      {isShowen && (
+      {isCartShowen && (
         <Cart onHideCart={HideCart} onShowCheckout={onShowCheckout} />
       )}
       {CheckoutIsShowen && <Checkout onHideCheckout={onHideCheckout} />}
