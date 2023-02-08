@@ -32,3 +32,29 @@
   color: black;
   font-size: x-large;
 }
+.verticalCenter button {
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  background-color: #df7861;
+  color: #fcf8e8;
+  padding: 0.75rem 3rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+.verticalCenter button:hover,
+button:active {
+  background-color: #bb6855;
+}
+
+.verticalCenter {
+  margin: 20px 0;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

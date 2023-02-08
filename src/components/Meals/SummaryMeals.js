@@ -13,6 +13,7 @@ const SummaryMeals = () => {
         All our meals are cooked with high-quality ingredients, just-in-time and
         of course by experienced chefs!
       </p>
+      <p> call me if you need a web developer! 0524-615296</p>
     </section>
   );
 };

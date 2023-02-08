@@ -1,5 +1,5 @@
 import classes from "./Checkout.module.css";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import CartContext from "../store/CartContext";
 import Modal from "./Modal";
 import useInput from "../../hooks/use-input";

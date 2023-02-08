@@ -26,3 +26,10 @@
   text-align: left;
   padding-left: 10px;
 }
+img {
+  width: 9rem;
+  height: 8rem;
+  border-radius: 7px;
+  border: solid 1px;
+  border-color: #df7861;
+}
