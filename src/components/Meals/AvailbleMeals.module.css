@@ -58,3 +58,6 @@ button:active {
   justify-content: space-around;
   align-items: center;
 }
+button.darkClass {
+  background-color: rgb(70, 23, 23);
+}

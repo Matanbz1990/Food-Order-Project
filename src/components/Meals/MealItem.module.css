@@ -8,18 +8,18 @@
 
 .meal h3 {
   margin: 0 0 0.25rem 0;
-  color: #0a250a;
+  color: #fcf8e8;
 }
 
 .description {
   font-style: italic;
-  color: #0a250a;
+  color: #fcf8e8;
 }
 
 .price {
   margin-top: 0.25rem;
   font-weight: bold;
-  color: #0a250a;
+  color: #fcf8e8;
   font-size: 1.25rem;
 }
 .name {
@@ -31,5 +31,4 @@ img {
   height: 8rem;
   border-radius: 7px;
   border: solid 1px;
-  border-color: #df7861;
 }

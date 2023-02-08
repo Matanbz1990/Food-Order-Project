@@ -72,35 +72,20 @@ const AvailbleMeals = () => {
     });
   }, []);
 
-  const drinksItems = drinks.map((meal) => (
-    <MealItem
-      id={meal.id}
-      key={meal.id}
-      description={meal.description}
-      name={meal.name}
-      price={meal.price}
-    />
-  ));
+  const foodItems = [meals, desserts, drinks];
+  let items = [];
 
-  const dessertsItems = desserts.map((meal) => (
-    <MealItem
-      id={meal.id}
-      key={meal.id}
-      description={meal.description}
-      name={meal.name}
-      price={meal.price}
-    />
-  ));
-
-  const mealItems = meals.map((meal) => (
-    <MealItem
-      id={meal.id}
-      key={meal.id}
-      description={meal.description}
-      name={meal.name}
-      price={meal.price}
-    />
-  ));
+  for (let i = 0; i < foodItems.length; i++) {
+    items[i] = foodItems[i].map((item) => (
+      <MealItem
+        id={item.id}
+        key={item.id}
+        description={item.description}
+        name={item.name}
+        price={item.price}
+      />
+    ));
+  }
 
   if (isLoading) {
     return (
@@ -142,14 +127,31 @@ const AvailbleMeals = () => {
       <Card>
         {!menuIsOpen && (
           <div className={classes.verticalCenter}>
-            <button onClick={mealsMenuHandeling}>Food Menu</button>
-            <button onClick={dessertMenuHandeling}>Desserts Menu</button>
-            <button onClick={drinksMenuHandeling}>Drinks Menu</button>
+            <button
+              onClick={mealsMenuHandeling}
+              className={`${mealsMenuIsOpen ? "classes.darkClass" : "hidden"}`}
+            >
+              Food Menu
+            </button>
+            <button
+              onClick={dessertMenuHandeling}
+              className={`${
+                dessertsMenuIsOpen ? "classes.darkClass" : "hidden"
+              }`}
+            >
+              Desserts Menu
+            </button>
+            <button
+              onClick={drinksMenuHandeling}
+              className={`${drinksMenuIsOpen ? "classes.darkClass" : "hidden"}`}
+            >
+              Drinks Menu
+            </button>
           </div>
         )}
-        {mealsMenuIsOpen && <ul>{mealItems}</ul>}
-        {dessertsMenuIsOpen && <ul>{dessertsItems}</ul>}
-        {drinksMenuIsOpen && <ul>{drinksItems}</ul>}
+        {mealsMenuIsOpen && <ul>{items[0]}</ul>}
+        {dessertsMenuIsOpen && <ul>{items[1]}</ul>}
+        {drinksMenuIsOpen && <ul>{items[2]}</ul>}
 
         {menuIsOpen && (
           <div className={classes.verticalCenter}>
