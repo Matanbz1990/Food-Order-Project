@@ -81,12 +81,18 @@ button:disabled {
 p {
   margin-left: 10px;
 }
-.EmailError {
-  margin-left: 37px;
-  display: inline;
-}
 
 .inputLine {
   display: flex;
+  align-items: center;
+  /* justify-content: safe; */
+}
+.inputLine input {
+  margin-left: 3rem;
+}
+.orderLine {
+  display: flex;
+  justify-content: space-between;
+  width: 25rem;
   align-items: center;
 }
